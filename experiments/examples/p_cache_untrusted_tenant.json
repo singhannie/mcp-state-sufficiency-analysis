@@ -1,0 +1,25 @@
+{
+  "policy": "P_cache_iso: private cached result may be reused only in same trusted authorization context",
+  "enforcement_point": "cache validator using server-supplied tenant field",
+  "required_atoms": [
+    "result_provenance:private_release_analysis",
+    "cache_scope:private",
+    "trusted_authz_context:tenant_alpha"
+  ],
+  "observations": [
+    "result_provenance:private_release_analysis",
+    "cache_scope:private",
+    "field:tenant_alpha",
+    "history:server_supplied_previous_call"
+  ],
+  "closure_rules": [
+    {
+      "name": "reject server-supplied tenant as authority source",
+      "requires": [
+        "field:tenant_alpha",
+        "history:server_supplied_previous_call"
+      ],
+      "derives": []
+    }
+  ]
+}
