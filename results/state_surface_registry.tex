@@ -1,0 +1,19 @@
+\begin{table}[t]
+  \caption{2026-07-28 state-surface registry. Every row was read from the SDK
+  (\texttt{mcp}~2.2.0)~\cite{mcpsdk} rather than from prose.}
+  \label{tab:registry}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.235\columnwidth}>{\raggedright\arraybackslash}p{0.235\columnwidth}>{\raggedright\arraybackslash}p{0.22\columnwidth}>{\raggedright\arraybackslash}p{0.25\columnwidth}@{}}
+    \toprule
+    Surface & Atoms carried & Observed by & Trusted by default? \\
+    \midrule
+    \texttt{Mcp-Method}, \texttt{Mcp-Name}~\cite{mcptransport} & routed method and tool name & any header-reading intermediary & no: body may disagree ($-32020$) \\
+    \texttt{=?base64?\{v\}?=} sentinel~\cite{mcptransport} & principal, any non-transit-safe header value & whoever decodes before comparing & only after decoding \\
+    \texttt{Mcp-Param-*} (\texttt{x-mcp-header})~\cite{mcptransport} & mirrored argument values & reverse proxies, L7 gateways, access logs & no: server authority, server chooses \\
+    progress notifications~\cite{mcpprogress} & fragment, progress token, free-text message & client callback; a correlator sees the sequence & fragment yes, order needs a host binding \\
+    \texttt{cacheScope}~\cite{mcpcache} & declared reuse scope & cache validator & no: no authorization context \\
+    \texttt{ttlMs}~\cite{mcpcache} & validity interval $\tau$ of Definition~1 & cache validator & yes: freshness is explicit \\
+    \bottomrule
+  \end{tabular}
+\end{table}

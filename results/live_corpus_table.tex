@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \caption{Both fixture corpora driven against live MCP servers on the
+  official Python SDK. The offline harness decides the same corpora
+  analytically; the counts agree.}
+  \label{tab:livecorpus}
+  \centering\scriptsize
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\columnwidth}>{\raggedright\arraybackslash}p{0.34\columnwidth}>{\raggedright\arraybackslash}p{0.30\columnwidth}@{}}
+    \toprule
+    Corpus & Boundary & Live outcome \\
+    \midrule
+    Sequence, 24 workflows,
+      68 live calls & $E_1$ permissive per-call &
+      allows 12/12 malicious \\
+    & $E_1$ strict per-call & denies 12/12
+      malicious, 8/12 benign \\
+    & $E_4$ sequence engine & denies 12/12
+      malicious, 0/12 benign \\
+    \midrule
+    Streaming, 423 conditions,
+      2103 progress notifications &
+      $E_2$ message-local & 100 with the pattern
+      matcher, 10 with the exact matcher \\
+    & $E_3$ reassembly & 423/423,
+      either matcher \\
+    \bottomrule
+  \end{tabular}
+\end{table}

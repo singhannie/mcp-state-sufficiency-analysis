@@ -1,0 +1,20 @@
+\begin{table}[t]
+  \caption{Cost and feasibility for the executable release-agent case. Timing
+  values are local microbenchmarks, not deployment latency claims; analyst time
+  is a single-author derivation log.}
+  \label{tab:case-costs}
+  \centering\footnotesize
+  \begin{tabular}{@{}p{0.35\columnwidth}p{0.18\columnwidth}p{0.35\columnwidth}@{}}
+    \toprule
+    Item & Value & Scope \\
+    \midrule
+    policy predicate and sinks & 9 min & single-author derivation log \\
+    A(P) abstraction and preservation argument & 14 min & single-author derivation log \\
+    Obs\_t(E) and trust/freshness classification & 12 min & single-author derivation log \\
+    closure rules and verdict reconciliation & 10 min & single-author derivation log \\
+    message-local DLP median & 20.30 us & 5000 local iterations \\
+    stream-and-sequence median & 10.80 us & 5000 local iterations \\
+    runtime difference & -9.50 us & stateful minus message-local median; negative means faster in this local fragment case \\
+    \bottomrule
+  \end{tabular}
+\end{table}

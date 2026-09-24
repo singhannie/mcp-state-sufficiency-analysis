@@ -1,0 +1,31 @@
+{
+  "policy": "P_exfil: deny private source flow to public sink",
+  "enforcement_point": "sequence policy engine",
+  "required_atoms": [
+    "source_label:repo_private",
+    "sink_label:public_issue",
+    "provenance:repo_acl",
+    "invocation_history:private_read_to_public_write"
+  ],
+  "observations": [
+    "source_label:repo_private",
+    "sink_label:public_issue",
+    "provenance:repo_acl",
+    "run_id:host_bound",
+    "event:read_private_repo",
+    "event:write_public_issue"
+  ],
+  "closure_rules": [
+    {
+      "name": "derive invocation history from host-bound run log",
+      "requires": [
+        "run_id:host_bound",
+        "event:read_private_repo",
+        "event:write_public_issue"
+      ],
+      "derives": [
+        "invocation_history:private_read_to_public_write"
+      ]
+    }
+  ]
+}

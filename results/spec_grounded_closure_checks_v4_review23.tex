@@ -1,0 +1,16 @@
+\begin{table*}[t]
+  \caption{Spec-grounded closure checks. These are not prevalence
+  measurements. Both rows are conformance illustrations: the method explains
+  which state must be present for an implementation to satisfy the existing
+  specification requirements.}
+  \label{tab:spec-closure}
+  \centering\footnotesize
+  \begin{tabular}{@{}p{0.18\textwidth}p{0.26\textwidth}p{0.18\textwidth}p{0.30\textwidth}@{}}
+    \toprule
+    Check & Insufficient control & Missing state & State-aware control \\
+    \midrule
+    Mcp-Name Base64 sentinel & raw-header gateway allowlist & header normalization & decode sentinel before body/header comparison \\
+    private cache conformance & non-conforming cache keyed only by method and cacheScope & authorization\_context, parameters & partition private results by authorization context; include result-affecting parameters in reuse check \\
+    \bottomrule
+  \end{tabular}
+\end{table*}

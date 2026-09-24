@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \caption{Construction checks for admitting an abstraction into
+  $\mathcal{A}(P)$. These checks do not make policy modeling automatic, but
+  they constrain analyst discretion and give reviewers concrete objections.}
+  \label{tab:abstraction-construction}
+  \centering\scriptsize
+  \begin{tabular}{@{}p{0.20\columnwidth}p{0.36\columnwidth}p{0.32\columnwidth}@{}}
+    \toprule
+    Check & Requirement & Example objection \\
+    \midrule
+    Predicate variables & Every free variable in the policy predicate must map to at least one typed state atom. & A policy mentions a sink or source that appears nowhere in the abstraction. \\
+    Semantic preservation & A replacement representation belongs in A(P) only if it preserves the policy truth value. & A normalized label merges private and public sources that the policy distinguishes. \\
+    Trust and freshness & Atoms requiring authority, provenance, or time validity must carry those requirements explicitly. & An attacker-supplied tenant string is treated as trusted authorization context. \\
+    Minimality check & Remove each atom once; if the policy can still be decided for all modeled executions, the atom is not required. & The abstraction includes decorative state that cannot affect the verdict. \\
+    \bottomrule
+  \end{tabular}
+\end{table}

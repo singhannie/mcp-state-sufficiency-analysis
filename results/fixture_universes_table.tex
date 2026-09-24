@@ -1,0 +1,18 @@
+\begin{table}[t]
+  \caption{Fixture atom universes. Completeness is decided by enumerating
+  every subset of each $U_f$; the totals are what the artifact emits.}
+  \label{tab:universes}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.16\columnwidth}rr>{\raggedright\arraybackslash}p{0.46\columnwidth}@{}}
+    \toprule
+    Fixture & $|U_f|$ & $2^{|U_f|}$ & Decisive atoms \\
+    \midrule
+    Sequence & 13 & 8,192 & declassification event, invocation order, sink label, source label \\
+    Streaming & 13 & 8,192 & correlation id, ordered fragments \\
+    Cache & 13 & 8,192 & authorization context, cache key, result provenance \\
+    \midrule
+    Total & 39 & 24,576 & \\
+    \bottomrule
+  \end{tabular}
+\end{table}

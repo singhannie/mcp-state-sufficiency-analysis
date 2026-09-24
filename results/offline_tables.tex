@@ -1,0 +1,16 @@
+\begin{table}[t]
+  \caption{Deterministic proof-of-mechanism checks, not deployment detection rates. The 27-byte key is the fixture corpus's \texttt{api\_key} class; the 51-byte key of Section~\ref{sec:live} is a different payload.}
+  \label{tab:offline}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.17\columnwidth}>{\raggedright\arraybackslash}p{0.28\columnwidth}>{\raggedright\arraybackslash}p{0.47\columnwidth}@{}}
+    \toprule
+    Mechanism & Fixture scope & Outcome \\
+    \midrule
+    Streaming audit & 10 payloads; $f=1\ldots L_i$; $\sum_i L_i=423$ conditions & message-local detects 119/423; reconstruction detects 423/423; a 27-byte key split with $f\leq26$ is visible only after reconstruction \\
+    Permissive per-call & 12 malicious workflows & denies 0 malicious workflows, so it is unsound for the sequence policy \\
+    Strict per-call & public-sink calls denied without history & denies 12/12 malicious workflows but falsely denies 8/12 benign workflows \\
+    Sequence policy & 24 workflows; 12 benign/12 malicious; lengths 2--4 & denies all malicious and allows all benign workflows \\
+    \bottomrule
+  \end{tabular}
+\end{table}

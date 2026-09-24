@@ -1,0 +1,17 @@
+\begin{table*}[t]
+  \caption{Analyst-replication worksheet for state-sufficiency classification.
+  This artifact does not claim an inter-rater result; it records the decision
+  points a second analyst should independently classify.}
+  \label{tab:analyst-worksheet}
+  \centering\footnotesize
+  \begin{tabular}{@{}p{0.18\textwidth}p{0.34\textwidth}p{0.40\textwidth}@{}}
+    \toprule
+    Step & Analyst judgment & Audit control \\
+    \midrule
+    Policy abstraction & Choose the minimal state representation for the predicate. & Record the predicate, variables, and any alternate sufficient representations. \\
+    Trusted observations & Decide whether a field is authenticated, fresh, and in scope for the policy gate. & Separate field presence from trusted state and list provenance assumptions. \\
+    Closure rules & Decide which reconstruction, correlation, and normalization rules are legitimate. & Name each rule and its integrity, freshness, and ordering prerequisites. \\
+    Semantic equivalence & Decide when normalized text or labels are equivalent to raw protocol state. & Record equivalence tests and disagreements before consensus. \\
+    \bottomrule
+  \end{tabular}
+\end{table*}

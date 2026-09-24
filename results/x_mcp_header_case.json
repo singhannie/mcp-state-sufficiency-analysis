@@ -1,0 +1,30 @@
+{
+  "sdk_package": "mcp 2.2.0",
+  "cases": [
+    {
+      "case": "no x-mcp-header",
+      "annotated_params": [],
+      "headers_emitted": {},
+      "body_reader_observes_secret": true,
+      "header_only_reader_observes_secret": false,
+      "atom_authority": "n/a"
+    },
+    {
+      "case": "release_tag annotated",
+      "annotated_params": [
+        "release_tag"
+      ],
+      "headers_emitted": {
+        "Mcp-Param-release-tag": "DEPLOY_SIGNING_KEY=ed25519:AbCdEfGhIjKlMnOpQrStUvWx"
+      },
+      "body_reader_observes_secret": true,
+      "header_only_reader_observes_secret": true,
+      "atom_authority": "server (schema annotation)"
+    }
+  ],
+  "value_is_mirrored_not_moved": true,
+  "observability_widened_to_header_only_boundaries": true,
+  "sdk_rejects_number_typed_annotation": "property 'size': x-mcp-header is only permitted on integer/string/boolean properties (got 'number')",
+  "finding": "The annotation mirrors the argument into an Mcp-Param-* header rather than moving it, so no boundary loses the atom. What changes is that header-only boundaries gain it, and the server chooses which values they gain through a schema annotation. A gateway routing on Mcp-Param-* consumes an atom of server authority and untrusted provenance.",
+  "scope": "exercises the SDK's own x-mcp-header codec, header builder and schema validator; no claim about how often deployments annotate secret-bearing parameters"
+}

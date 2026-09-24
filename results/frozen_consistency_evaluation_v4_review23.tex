@@ -1,0 +1,24 @@
+\begin{table*}[t]
+  \caption{Self-scored documentation-consistency worksheet for the frozen MCP
+  2026-07-28 prediction table. This is author-scored consistency checking
+  against official revision and SDK documentation, not independent external
+  validation or public deployment measurement.}
+  \label{tab:doc-evaluation}
+  \centering\footnotesize
+  \begin{tabular}{@{}p{0.18\textwidth}p{0.08\textwidth}p{0.66\textwidth}@{}}
+    \toprule
+    Surface & Result & Explanation \\
+    \midrule
+    server/discover & partial & The surface exists and can inform clients, but client invocation timing and cached prior state make provenance/freshness deployment-dependent. \\
+    tools/call & correct & One call is unit-aligned, while policies over prior reads or taint still require history outside the single request. \\
+    notifications/progress & correct & When the host/runtime receives policy-relevant textual progress and forwards it to an audited sink, content policies require correlation and reconstruction or equivalent semantic state. \\
+    MRTR input\_required & correct & The requested input is visible, but policy over the pending call and replayed answer requires continuity state. \\
+    response \_meta & correct & Metadata is a useful observation only when it reaches a trusted policy gate with integrity and freshness. \\
+    resource/task event streams & correct & The primary state is event stream id, notification type, resource/task correlation, and provenance rather than the full resource content. \\
+    Tasks & correct & Authorization over long-running releases depends on task id, state, update history, and provenance. \\
+    Mcp-Method / Mcp-Name & correct & Gateways can observe these headers, but they do not by themselves reconstruct body content or invocation history. \\
+    cacheable list results & correct & Correct reuse depends on result-affecting parameters and on partitioning private entries by authorization context. \\
+    application-state handles & correct & The handle may be visible to the model, but policy requires binding it to provenance and permitted operations. \\
+    \bottomrule
+  \end{tabular}
+\end{table*}

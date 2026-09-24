@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \caption{State-sufficiency verdict examples. Positive rows are witnessed by
+  subset containment; negative rows are relative to the declared authored
+  abstraction family, not global completeness claims. Non-listed pairings
+  remain in JSON.}
+  \label{tab:state-sufficiency}
+  \centering\footnotesize
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{@{}p{0.30\columnwidth}p{0.24\columnwidth}p{0.17\columnwidth}p{0.17\columnwidth}@{}}
+    \toprule
+    Policy & Enforcement point & Verdict & Missing state \\
+    \midrule
+    block secret in streamed build log & message-local DLP & insuff. under $\widehat{A}$ & reconst. stream \\
+    block secret in streamed build log & MCP stream auditor & sufficient & none \\
+    deny private repo to public build log & approval dialog & insuff. under $\widehat{A}$ & invocation history, provenance \\
+    deny private repo to public build log & sequence policy engine & sufficient & none \\
+    validate tenant-scoped response cache & tenant-aware cache & sufficient & none \\
+    validate tenant-scoped response cache & tenant-claim cache & insuff. under $\widehat{A}$ & trusted tenant \\
+    validate long-running release task update & task monitor & sufficient & none \\
+    \bottomrule
+  \end{tabular}
+\end{table}

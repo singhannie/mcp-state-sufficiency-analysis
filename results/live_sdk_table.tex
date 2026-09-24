@@ -1,0 +1,22 @@
+\begin{table}[t]
+  \caption{Placement verdicts, before and after the adapter of Section~\ref{sec:adapter}. ``Named atom'' is what the uninstrumented verdict reports missing. $E_1$ and $E_2$ do not change: no feed makes a per-call gate or a message-local monitor decide a policy over prior calls or reconstructed content, so the repair is to move the decision, not to supply the boundary. $E_1$--$E_4$ are real handler, client-callback and middleware components against three live MCP servers on the official Python SDK negotiating 2026-07-28; $E_5$ and $E_6$ are fixture-derived.}
+  \label{tab:live}
+  \centering\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.135\columnwidth}>{\raggedright\arraybackslash}p{0.130\columnwidth}>{\raggedright\arraybackslash}p{0.150\columnwidth}>{\raggedright\arraybackslash}p{0.145\columnwidth}>{\raggedright\arraybackslash}p{0.115\columnwidth}>{\raggedright\arraybackslash}p{0.105\columnwidth}@{}}
+    \toprule
+    Point & State needed & Named atom & Uninstrum. & With adapter & Evidence \\
+    \midrule
+    $E_1$ approval & current call & prior calls/output & insufficient & insufficient & live~\checkmark \\
+    $E_2$ msg DLP & content unit & reconstructed stream & insufficient & insufficient & live~\checkmark \\
+    $E_3$ stream audit & ordered stream & host run binding & insufficient & sufficient & live~\checkmark \\
+    $E_4$ sequence & history + taint & host labels & insufficient & sufficient & live~\checkmark \\
+    $E_5$ cache & reuse context & trusted authz & insufficient & sufficient & fixture \\
+    $E_6$ task mon. & task id + history & continuity & not established & not established & fixture \\
+    \midrule
+    \multicolumn{6}{@{}l}{\emph{Surface findings, same harness}} \\
+    \multicolumn{5}{@{}>{\raggedright\arraybackslash}p{0.735\columnwidth}@{}}{\texttt{x-mcp-header} mirrors an argument into \texttt{Mcp-Param-*}; the value stays in the body, so observability widens under server control} & live~\checkmark \\
+    \multicolumn{5}{@{}>{\raggedright\arraybackslash}p{0.735\columnwidth}@{}}{a principal wrapped in \texttt{=?base64?}\ldots\texttt{?=} fails a raw compare against the body name and succeeds once decoded} & live~\checkmark \\
+    \bottomrule
+  \end{tabular}
+\end{table}

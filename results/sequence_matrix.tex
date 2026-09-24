@@ -1,0 +1,37 @@
+\begin{table*}[t]
+  \caption{Sequence authorization matrix. The sequence policy propagates
+  private-source taint across preserving transformations and clears it only
+  after an explicit declassification step.}
+  \label{tab:sequence-matrix}
+  \centering\footnotesize
+  \begin{tabular}{@{}p{0.36\textwidth}p{0.08\textwidth}p{0.05\textwidth}p{0.12\textwidth}p{0.14\textwidth}@{}}
+    \toprule
+    Case & Type & Len. & Per-call & Sequence policy \\
+    \midrule
+    benign\_public\_issue & benign & 2 & allow & allow \\
+    benign\_private\_note & benign & 2 & allow & allow \\
+    benign\_redacted\_build\_log & benign & 3 & allow & allow \\
+    benign\_public\_build\_log & benign & 2 & allow & allow \\
+    benign\_ci\_env\_redacted\_issue & benign & 3 & allow & allow \\
+    benign\_vuln\_redacted\_release & benign & 3 & allow & allow \\
+    benign\_secret\_private\_note & benign & 2 & allow & allow \\
+    benign\_repo\_analyze\_redact\_release & benign & 4 & allow & allow \\
+    benign\_public\_summary\_slack & benign & 3 & allow & allow \\
+    benign\_repo\_project\_issue & benign & 3 & allow & allow \\
+    benign\_key\_redacted\_log & benign & 3 & allow & allow \\
+    benign\_user\_redacted\_slack & benign & 3 & allow & allow \\
+    exfil\_user\_to\_shared\_log & attack & 2 & allow & deny \\
+    exfil\_user\_summary\_to\_shared\_log & attack & 3 & allow & deny \\
+    exfil\_repo\_to\_build\_log & attack & 2 & allow & deny \\
+    exfil\_repo\_analysis\_to\_build\_log & attack & 3 & allow & deny \\
+    exfil\_ci\_env\_to\_public\_issue & attack & 3 & allow & deny \\
+    exfil\_secret\_store\_to\_release & attack & 3 & allow & deny \\
+    exfil\_vuln\_draft\_to\_issue & attack & 3 & allow & deny \\
+    exfil\_key\_to\_slack & attack & 3 & allow & deny \\
+    exfil\_repo\_chain\_to\_release & attack & 4 & allow & deny \\
+    exfil\_ci\_metadata\_redaction\_gap & attack & 3 & allow & deny \\
+    exfil\_user\_reordered\_to\_public & attack & 3 & allow & deny \\
+    exfil\_repo\_to\_shared\_log & attack & 3 & allow & deny \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
