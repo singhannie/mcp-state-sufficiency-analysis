@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Local third-party clones for the optional static checker.
+experiments/public_gateway_sources/
+
+# Local rerun noise.
+*.log
+*.aux
+*.out
+fig1_*.png
